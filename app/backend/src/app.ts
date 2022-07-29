@@ -1,4 +1,5 @@
 import * as express from 'express';
+import UserRouter from './routes/userRoutes';
 
 class App {
   public app: express.Express;
@@ -17,6 +18,8 @@ class App {
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT,PATCH');
       res.header('Access-Control-Allow-Headers', '*');
+
+      this.app.use(UserRouter);
       next();
     };
 
@@ -33,3 +36,6 @@ export { App };
 
 // A execução dos testes de cobertura depende dessa exportação
 export const { app } = new App();
+
+// Desenvolvimento do código baseado na aula de revisão da turma 17 de 29-06-22
+// https://app.betrybe.com/course/live-lectures/sd-cohort-17#revisao-backend-290622
