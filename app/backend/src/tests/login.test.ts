@@ -12,10 +12,19 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-const login = {
+  const login = {
     email: 'user@user.com',
     password: 'secret_user'
   }
+
+  const password = {   
+    password: 'secret_user'
+  }
+
+  const email = {   
+    email: 'user@user.com'
+  }
+  
   const userMock = { 
     id: 2,
     username: 'User',
@@ -40,4 +49,19 @@ describe('Teste de login', () => {
         expect(response.body).have.property('token');
         
     });
+
+    it('Login sem email', async () => {
+        const response = await chai.request(app).post('/login').send(password);
+
+        expect(response.status).to.be.equal(400);
+        expect(response.body).to.be.equals({ message: 'All fields must be filled'});
+    });
+
+    it('Login sem password', async () => {
+        const response = await chai.request(app).post('/login').send(email);
+
+        expect(response.status).to.be.equal(400);
+        expect(response.body).to.be.equals({ message: 'All fields must be filled'});
+    });
+
 });
