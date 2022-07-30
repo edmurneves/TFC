@@ -54,14 +54,14 @@ describe('Teste de login', () => {
         const response = await chai.request(app).post('/login').send(password);
 
         expect(response.status).to.be.equal(400);
-        expect(response.body).to.be.equals({ message: 'All fields must be filled'});
+        expect(response.body).to.be.eql({ message: 'All fields must be filled'});
     });
 
     it('Login sem password', async () => {
         const response = await chai.request(app).post('/login').send(email);
 
         expect(response.status).to.be.equal(400);
-        expect(response.body).to.be.equals({ message: 'All fields must be filled'});
+        expect(response.body).to.be.eql({ message: 'All fields must be filled'});
     });
 
 });
