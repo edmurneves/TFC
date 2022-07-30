@@ -11,7 +11,7 @@ export default class User implements IUserService {
   async login(email: string, password: string) {
     const user = await this.model.findUser(email);
     if (!user) return false;
-    const check = bcrypt.compareSync(password, user?.password);
+    const check = bcrypt.compareSync(password, user.password);
     if (!check) return false;
     const token = generateJWT(user);
     return token;
