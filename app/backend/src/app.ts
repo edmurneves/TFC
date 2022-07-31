@@ -1,5 +1,6 @@
 import * as express from 'express';
 import UserRouter from './routes/userRoutes';
+import TeamRouter from './routes/teamRoutes';
 
 class App {
   public app: express.Express;
@@ -20,6 +21,7 @@ class App {
       res.header('Access-Control-Allow-Headers', '*');
 
       this.app.use(UserRouter);
+      this.app.use(TeamRouter);
       next();
     };
 
