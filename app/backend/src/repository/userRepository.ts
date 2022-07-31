@@ -10,4 +10,10 @@ export default class UserRepository implements IUserModel {
     const user = await this.model.findOne({ where: { email } });
     return user;
   }
+
+  async findRole(password: string): Promise<IUser | null> {
+    const role = await this.model.findOne({ where: { password },
+      attributes: { exclude: ['id', 'username', 'email', 'password'] } });
+    return role;
+  }
 }
