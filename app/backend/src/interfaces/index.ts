@@ -15,3 +15,16 @@ export interface IUserService {
   login(email: string, password: string): Promise<string | boolean>;
   validateLogin(authorization: string | undefined): Promise<IUser | null>;
 }
+
+export interface ITeamModel {
+  getAll(): Promise<ITeam[] | null>;
+}
+
+export interface ITeam {
+  id?: number;
+  teamName: string;
+}
+
+export interface ITeamService {
+  getAll(): Promise<ITeam[] | null>;
+}
