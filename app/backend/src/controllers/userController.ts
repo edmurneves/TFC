@@ -16,4 +16,14 @@ export default class Controller {
       next(error);
     }
   }
+
+  async validateLogin(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { authorization } = req.headers;
+      const role = await this.service.validateLogin(authorization);
+      return res.status(200).json(role);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
