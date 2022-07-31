@@ -18,6 +18,7 @@ export interface IUserService {
 
 export interface ITeamModel {
   getAll(): Promise<ITeam[] | null>;
+  getById(id: string): Promise<ITeam | null>;
 }
 
 export interface ITeam {
@@ -27,4 +28,5 @@ export interface ITeam {
 
 export interface ITeamService {
   getAll(): Promise<ITeam[] | null>;
+  getById(id: string): Promise<ITeam | null>;
 }
