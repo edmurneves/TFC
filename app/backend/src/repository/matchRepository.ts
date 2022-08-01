@@ -23,4 +23,16 @@ export default class MatchRepository implements IMatchModel {
     }
     return allMatches as IMatch[];
   }
+
+  async create(match: IMatch): Promise<IMatch> {
+    const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals } = match;
+    const matchCreate = await this.model.create({
+      homeTeam,
+      awayTeam,
+      homeTeamGoals,
+      awayTeamGoals,
+      inProgress: true,
+    });
+    return matchCreate;
+  }
 }
