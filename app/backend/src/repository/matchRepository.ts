@@ -11,14 +11,14 @@ export default class MatchRepository implements IMatchModel {
     let allMatches: unknown;
     if (matches === null) {
       allMatches = await this.model.findAll({ include: [
-        { model: teamModel, as: 'home', attributes: { exclude: ['id'] } },
-        { model: teamModel, as: 'away', attributes: { exclude: ['id'] } },
+        { model: teamModel, as: 'teamHome', attributes: { exclude: ['id'] } },
+        { model: teamModel, as: 'teamAway', attributes: { exclude: ['id'] } },
       ] });
     } else {
       allMatches = await this.model.findAll({ where: { inProgress: matches },
         include: [
-          { model: teamModel, as: 'home', attributes: { exclude: ['id'] } },
-          { model: teamModel, as: 'away', attributes: { exclude: ['id'] } },
+          { model: teamModel, as: 'teamHome', attributes: { exclude: ['id'] } },
+          { model: teamModel, as: 'teamAway', attributes: { exclude: ['id'] } },
         ] });
     }
     return allMatches as IMatch[];
