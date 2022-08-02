@@ -13,4 +13,8 @@ matchRouter.post('/matches', checkJWT, checkMatch, (req, res, next) => {
   MatchFactory().createMatch(req, res, next);
 });
 
+matchRouter.patch('/matches/:id/finish', (req, res, next) => {
+  MatchFactory().updateFinish(req, res, next);
+});
+
 export default matchRouter;
