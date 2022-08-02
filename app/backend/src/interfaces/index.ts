@@ -43,9 +43,11 @@ export interface IMatch {
 export interface IMatchModel {
   getAll(matches: boolean | null): Promise<IMatch[] | null>;
   create(match: IMatch): Promise<IMatch>;
+  updateFinish(id: string): Promise<unknown>;
 }
 
 export interface IMatchService {
   getAll(matches: boolean | null): Promise<IMatch[] | null>;
   createMatch(match: IMatch): Promise<IMatch>;
+  updateFinish(id: string): Promise<unknown>;
 }
