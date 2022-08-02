@@ -19,4 +19,9 @@ export default class MatchService implements IMatchService {
     const match = await this.model.updateFinish(id);
     return match;
   }
+
+  async updateMatch(homeTeamGoals: number, awayTeamGoals: number, id: string): Promise<unknown> {
+    const match = await this.model.updateMatch(homeTeamGoals, awayTeamGoals, id);
+    return match;
+  }
 }
