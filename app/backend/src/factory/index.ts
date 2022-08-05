@@ -10,6 +10,8 @@ import MatchRepository from '../repository/matchRepository';
 import MatchService from '../services/matchService';
 import MatchController from '../controllers/matchController';
 
+import LeaderboardService from '../services/leaderboardService';
+import LeaderboardController from '../controllers/leaderboardController';
 // Utilizando o Pattern Factory
 
 export const UserFactory = () => {
@@ -32,6 +34,15 @@ export const MatchFactory = () => {
   const repository = new MatchRepository();
   const service = new MatchService(repository);
   const controller = new MatchController(service);
+
+  return controller;
+};
+
+export const LeaderboardFactory = () => {
+  const matchRepository = new MatchRepository();
+  const teamRepository = new TeamRepository();
+  const service = new LeaderboardService(matchRepository, teamRepository);
+  const controller = new LeaderboardController(service);
 
   return controller;
 };
